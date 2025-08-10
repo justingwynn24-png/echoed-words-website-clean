@@ -81,7 +81,7 @@
     /* Multi-logo background strategy */
     body {
       background-image: 
-        url('logos/watermark/simple-and-clean-brand-board.png'),
+        url('logos/watermark/watermark-pattern-color-transparent.png'),
         linear-gradient(135deg, var(--brand-black) 0%, var(--brand-dark) 100%);
       background-size: 200px 200px, cover;
       background-position: center, center;
@@ -219,7 +219,7 @@
       transform: translate(-50%, -50%);
       width: 60px;
       height: 60px;
-      background: url('logos/text/simple-and-clean-brand-board.png') center/contain no-repeat;
+      background: url('logos/text/text-slogan-color-transparent.png') center/contain no-repeat;
       opacity: 0.4;
       animation: rotate 3s linear infinite;
     }
@@ -435,7 +435,7 @@
       transform: translateX(-50%);
       width: 40px;
       height: 40px;
-      background: url('logos/monograms/layout-circle-icon-color-transparent.png') center/contain no-repeat;
+      background: url('logos/monograms/monogram-circle-color-transparent.png') center/contain no-repeat;
       opacity: 0.6;
     }
     
@@ -467,7 +467,7 @@
       transform: translate(-50%, -50%);
       width: 80px;
       height: 80px;
-      background: url('logos/monograms/layout-circle-icon-color-transparent.png') center/contain no-repeat;
+      background: url('logos/monograms/monogram-circle-color-transparent.png') center/contain no-repeat;
       opacity: 0.3;
       animation: pulse 2s infinite;
     }
@@ -492,12 +492,12 @@
       .logo-container {
         width: 50px;
         height: 50px;
-        background-image: url('logos/monograms/layout-circle-icon-color-transparent.png');
+        background-image: url('logos/monograms/monogram-circle-color-transparent.png');
       }
       
       /* Simplified background for mobile */
       body {
-        background-image: url('logos/watermark/simple-and-clean-brand-board.png'), linear-gradient(135deg, var(--brand-black) 0%, var(--brand-dark) 100%);
+        background-image: url('logos/watermark/watermark-pattern-color-transparent.png'), linear-gradient(135deg, var(--brand-black) 0%, var(--brand-dark) 100%);
         background-size: 150px 150px, cover;
       }
     }
@@ -605,20 +605,10 @@
         Suno: "https://suno.com/@justdef1",
         Website: "https://echoedwordsllc.com"
       },
-      // Local CSV files from GitHub
+      // Updated CSV filename
       dataFiles: {
-        contentCsv: "content-manifest-20250810-v2.csv",
-        tracksCsv: "tracks.csv" // If you have a separate tracks file
+        contentCsv: "content_manifest_2025-08-10-v2.csv"
       }
-    };
-
-    // Audio file mappings to Google Drive direct links
-    const AUDIO_LINKS = {
-      "The Elephant in the Room": "https://drive.google.com/uc?export=download&id=1NnOFMTAwJt5WlYpokn4IsKvm16yqdKSt",
-      "Two Lovebirds": "https://drive.google.com/uc?export=download&id=1cFQswH1Zs3-uPR07tCIilYNVmm-xdUQL",
-      "Torn": "https://drive.google.com/uc?export=download&id=1LIHUmJT-Iey7vvOi0ITJQ3rweJCJVyJl",
-      "Drag Them to the Deep": "https://drive.google.com/uc?export=download&id=1S7QjuAXB6PXhYqWhUZsMkzS8ChHcUC5E",
-      "In Your Mind": "https://drive.google.com/uc?export=download&id=1t8rlkbawoQ6G3Ef1inoHyul_F_sdjbV5"
     };
 
     function el(tag, attrs={}, ...children){
@@ -649,98 +639,18 @@
       }
     }
 
-    function normalizeFileName(fileName) {
-      if (!fileName) return '';
-      return fileName
-        .toLowerCase()
-        .replace(/['']/g, '')
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .trim();
-    }
-
-    function convertGoogleDriveAudioLink(link) {
-      if (!link || link === '<drive link>' || link.includes('<drive link>') || !link.includes('drive.google.com')) {
-        return null;
-      }
-      try {
-        let fileId = null;
-        
-        // Format: https://drive.google.com/file/d/FILE_ID/view
-        let match = link.match(/\/file\/d\/([a-zA-Z0-9-_]+)/);
-        if (match) {
-          fileId = match[1];
-        }
-        
-        // Format: https://drive.google.com/open?id=FILE_ID
-        if (!fileId) {
-          match = link.match(/[?&]id=([a-zA-Z0-9-_]+)/);
-          if (match) {
-            fileId = match[1];
-          }
-        }
-        
-        if (fileId) {
-          return `https://drive.google.com/uc?export=download&id=${fileId}`;
-        }
-      } catch (e) {
-        console.warn('Error converting Google Drive audio link:', link, e);
-      }
-      
-      return null;
-    }
-
-    function findLocalImage(title, filePath) {
-      // If we have a file_path from CSV, use it
-      if (filePath && filePath !== 'local_file' && !filePath.includes('<drive link>')) {
-        return filePath;
-      }
-      
-      // Updated mapping for your actual folder structure
-      const imageMap = {
-        "Mr. Big Man": "images/releases/Mr. Big Man.jpg",
-        "Without Becoming Undone": "images/releases/Without Becoming Undone.png", 
-        "The Elephant in the Room": "images/releases/The Elephant is in the Room 1x1.jpg",
-        "Two Lovebirds": "images/releases/Take Me Away.jpg",
-        "Torn": "images/releases/Album cover TORN.png",
-        "Drag Them to the Deep": "images/releases/Drag Them to the Deep.jpeg",
-        "I Don't Know": "images/releases/I_Dont_Know_Album_Cover.jpg",
-        "Slipping": "images/releases/Slipping.jpg",
-        "Bare Naked Edited Filter": "images/releases/BARE NAKED EDITED FILTER.jpg",
-        "Bare Naked Edited Filter (Remix)": "images/releases/BNEF Remix.jpg",
-        "Gen-X": "images/releases/Gen X.jpg",
-        "Carolina Inspiration - Stagecoach 2025": "images/releases/carolina inspiration.jpg",
-        "Dangerous Energy": "images/releases/Dangerous Energy.jpg",
-        "One Night": "images/releases/1 night vers a.jpg",
-        "I've Got Love": "images/releases/I got Love.jpg",
-        "Metaphors": "images/releases/Metaphors_Album_Cover_9x16.jpg",
-        "What Are You Waiting For": "images/releases/What_Are_You_Waiting_For_Album_Cover.jpg",
-        "Go On": "images/releases/Go On.png"
-      };
-      
-      return imageMap[title] || null;
-    }
-
     function createPlaceholderImage(title, persona) {
       const canvas = document.createElement('canvas');
       canvas.width = 300;
       canvas.height = 300;
       const ctx = canvas.getContext('2d');
       
-      // Brand colors background with logo watermark
+      // Brand colors background
       const gradient = ctx.createLinearGradient(0, 0, 300, 300);
       gradient.addColorStop(0, '#131514');
       gradient.addColorStop(1, '#000000');
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, 300, 300);
-      
-      // Create logo watermark pattern
-      const logoImages = [
-        'https://drive.google.com/uc?export=view&id=1U1FQjqNufEvOf_LzjkJxhwEUkkughPYE',
-        'https://drive.google.com/uc?export=view&id=1V1Wl6iz19q_DF7KNLvEoYJj9btmLT1PA',
-        'https://drive.google.com/uc?export=view&id=1RS0z52FEahtvrj2lcKJCQ_uR5NEWuxfp'
-      ];
       
       // Subtle logo watermark
       ctx.globalAlpha = 0.1;
@@ -821,48 +731,45 @@
     }
 
     function cardRelease(r){
-      const imageUrl = findLocalImage(r.title, r.cover);
+      // Use the file_path from CSV directly (no more Google Drive conversion needed)
+      const imageUrl = r.file_path;
       
       const linksRow = el("div", { class: "btn-row" });
-      if (r.links){
-        for (const [label, url] of Object.entries(r.links)){
-          if(!url) continue;
-          linksRow.appendChild(el("a", { class: "btn", href: url, target: "_blank", rel: "noreferrer" }, label));
-        }
+      
+      // Add audio player if audio file exists
+      let audio = null;
+      if (r.TYPE === 'audio' && r.file_path) {
+        audio = el("audio", { controls: "", preload: "none" });
+        const source = el("source", { src: r.file_path, type: "audio/mpeg" });
+        audio.appendChild(source);
+        
+        audio.onerror = () => {
+          console.warn('Audio failed to load:', r.file_path);
+          audio.style.display = 'none';
+        };
       }
       
       const coverEl = el("div", { class: "cover" });
-      if (imageUrl) {
-        const img = el("img", { alt: r.title || "cover" });
+      if (imageUrl && imageUrl.includes('images/releases/')) {
+        const img = el("img", { alt: r.NAME || "cover" });
         img.onerror = () => {
-          img.src = createPlaceholderImage(r.title, r.persona);
+          img.src = createPlaceholderImage(r.NAME, '');
         };
         img.src = imageUrl;
         coverEl.appendChild(img);
       } else {
         const placeholderImg = el("img", { 
-          src: createPlaceholderImage(r.title, r.persona), 
-          alt: r.title || "cover" 
+          src: createPlaceholderImage(r.NAME, ''), 
+          alt: r.NAME || "cover" 
         });
         coverEl.appendChild(placeholderImg);
-      }
-      
-      let audio = null;
-      if (r.audioUrl) {
-        audio = el("audio", { controls: "", preload: "none" });
-        const source = el("source", { src: r.audioUrl, type: "audio/mpeg" });
-        audio.appendChild(source);
-        
-        audio.onerror = () => {
-          audio.style.display = 'none';
-        };
       }
       
       return el("article", { class: "card" },
         coverEl,
         el("div", { class: "body" },
-          el("h3", {}, r.title || "Untitled"), 
-          el("div", { class: "meta" }, `${r.persona || ""}${r.date ? " • " + r.date : ""}`),
+          el("h3", {}, r.NAME || "Untitled"), 
+          el("div", { class: "meta" }, `${r.intended_use || ""}`),
           audio,
           linksRow
         )
@@ -870,20 +777,21 @@
     }
 
     function cardPersona(p){
-      const imageUrl = p.imagePath;
+      // Use the file_path from CSV directly
+      const imageUrl = p.file_path;
       
       const coverEl = el("div", { class: "cover" });
       if (imageUrl) {
-        const img = el("img", { alt: p.name || "persona" });
+        const img = el("img", { alt: p.NAME || "persona" });
         img.onerror = () => {
-          img.src = createPlaceholderImage(p.name, '');
+          img.src = createPlaceholderImage(p.NAME, '');
         };
         img.src = imageUrl;
         coverEl.appendChild(img);
       } else {
         const placeholderImg = el("img", { 
-          src: createPlaceholderImage(p.name, ''), 
-          alt: p.name || "persona" 
+          src: createPlaceholderImage(p.NAME, ''), 
+          alt: p.NAME || "persona" 
         });
         coverEl.appendChild(placeholderImg);
       }
@@ -891,8 +799,8 @@
       return el("div", { class: "card" },
         coverEl,
         el("div", { class: "body" },
-          el("h3", {}, p.name || "Unnamed"),
-          el("div", { class: "description" }, p.blurb || "")
+          el("h3", {}, p.NAME || "Unnamed"),
+          el("div", { class: "description" }, p.notes || "")
         )
       );
     }
@@ -901,57 +809,46 @@
       render();
       
       try {
-        const tracksData = await loadCSV(CONFIG.sheets.tracksCsv);
+        // Load the new CSV file
+        const contentData = await loadCSV(CONFIG.dataFiles.contentCsv);
         
-        let releases = [];
-        if (tracksData && tracksData.length) {
-          releases = tracksData
-            .filter(row => row['Track Title'] && row['Track Title'].trim())
-            .slice(0, 16)
-            .map(row => {
-              const links = {};
-              if (row['Suno Link']) links.Suno = row['Suno Link'];
-              
-              return {
-                title: row['Track Title'],
-                persona: row['Artist Persona'] || 'Various',
-                date: '2025',
-                links
-              };
-            });
+        if (!contentData || contentData.length === 0) {
+          throw new Error('No content data loaded');
         }
         
-        const personas = [
-          { 
-            name: "Persephone's Children", 
-            blurb: "Epic metal / alt rock with female vocals. Climate themes and mythic storytelling." 
-          },
-          { 
-            name: "Lugal I‑Shun", 
-            blurb: "Reggae persona. Protest roots with mythic Sumerian flavor and spiritual resistance." 
-          },
-          { 
-            name: "Dingiren Kinninzi", 
-            blurb: "Cinematic house and EDM. Post-modern Parisian fashion meets New York style." 
-          },
-          { 
-            name: "justdef1", 
-            blurb: "Producer / composer / label head. Multi-genre songwriting and creative direction." 
-          }
-        ];
+        // Filter releases (audio + release images)
+        const audioTracks = contentData.filter(row => row.TYPE === 'audio').slice(0, 12);
+        const releaseImages = contentData.filter(row => row.TYPE === 'release_image');
         
+        // Combine audio with matching release images
+        const releases = audioTracks.map(audio => {
+          const matchingImage = releaseImages.find(img => img.NAME === audio.NAME);
+          return {
+            ...audio,
+            coverImage: matchingImage ? matchingImage.file_path : null
+          };
+        });
+        
+        // Filter personas
+        const personas = contentData.filter(row => row.TYPE === 'persona_image');
+        
+        // Render releases
         const relRoot = document.getElementById("releases-grid");
         relRoot.innerHTML = "";
         if (releases.length > 0) {
           releases.forEach(r => relRoot.appendChild(cardRelease(r)));
         } else {
-          relRoot.innerHTML = '<div class="error">No releases found. Check your spreadsheet data.</div>';
+          relRoot.innerHTML = '<div class="error">No releases found. Check your CSV data.</div>';
         }
         
+        // Render personas
         const perRoot = document.getElementById("personas-grid");
         perRoot.innerHTML = "";
-        personas.forEach(p => perRoot.appendChild(cardPersona(p)));
+        if (personas.length > 0) {
+          personas.forEach(p => perRoot.appendChild(cardPersona(p)));
+        } else {
+          perRoot.innerHTML = '<div class="error">No personas found. Check your CSV data.</div>';
+        }
         
       } catch (error) {
         console.error('Bootstrap error:', error);
-        document.
