@@ -1,0 +1,91 @@
+TYPE,NAME,file_path,drive_share_link,intended_use,notes
+persona_image,Persephone's Children,images/personas/Persephone's Children.jpg,,/personas card + hero,primary band image
+persona_image,Lugal I-Shun,images/personas/justdef1.png,,/personas card,reggae persona - using justdef1 image as placeholder
+persona_image,Dingiren Kinninzi,images/personas/dangerous energy.png,,/personas card,cinematic house persona - using available image
+persona_image,justdef1,images/personas/justdef1.png,,/personas card,producer/composer
+logo,Echoed Words Main,logos/echoed-high-resolution-logo.png,,header/footer,main logo
+logo,Echoed Words Transparent,logos/echoed-high-resolution-logo-transparent.png,,overlays,transparent version
+logo,Echoed Words Grayscale,logos/echoed-high-resolution-logo-grayscale.png,,print/mono,grayscale version
+logo,Simple Clean Brand Board,logos/simple-and-clean-brand-board.png,,brand reference,brand board
+logo,Color Gradients Brand Board,logos/color-gradients-brand-board.jpeg,,brand reference,color palette
+logo,Layout Circle Icon,logos/layout-circle-icon-color-transparent.png,,favicon/small use,circular icon
+monogram,Circle Color Transparent,logos/monograms/monogram-circle-color-transparent.png,,social media,circular monogram
+monogram,Letter Black Transparent,logos/monograms/monogram-letter-black-transparent.png,,letterhead,letter E monogram
+monogram,Square Color Transparent,logos/monograms/monogram-square-color-transparent.png,,app icons,square monogram
+text_logo,Slogan Black Transparent,logos/text/text-slogan-black-transparent.png,,marketing,tagline text
+text_logo,Slogan Color Transparent,logos/text/text-slogan-color-transparent.png,,marketing,tagline colored
+text_logo,Wordmark Color,logos/text/text-wordmark-color.png,,headers,brand name colored
+text_logo,Wordmark White,logos/text/text-wordmark-white.png,,dark backgrounds,brand name white
+watermark,Pattern Color Transparent,logos/watermark/watermark-pattern-color-transparent.png,,backgrounds,repeating pattern
+copyright,Trademark Color Transparent,logos/copyright/copyright-trademark-color-transparent.png,,legal documents,trademark symbol
+copyright,Year Font Color Transparent,logos/copyright/copyright-year-font-color-transparent.png,,copyright notices,year marking
+audio,A SKYSCRAPER,audio/mp3/A SKYSCRAPER.mp3,,streaming/sync,rock track
+audio,Ain't going to Let you,audio/mp3/Ain't going to Let you.mp3,,streaming/sync,emotional ballad
+audio,Bare Naked Edited Filter,audio/mp3/Bare Naked Edited Filter.mp3,,streaming/sync,filtered version
+audio,Bare Naked Edited Filter (Remix),audio/mp3/Bare Naked Edited Filter (Remix).mp3,,streaming/sync,remix version
+audio,Carolina Inspiration - Stagecoach 2025,audio/mp3/Carolina Inspiration - Stagecoach 2025.mp3,,streaming/sync,country inspiration
+audio,Changed,audio/mp3/Changed.mp3,,streaming/sync,transformation theme
+audio,Dangerous Energy,audio/mp3/Dangerous Energy.mp3,,streaming/sync,high energy track
+audio,Drag Them to the Deep,audio/mp3/Drag Them to the Deep.mp3,,streaming/sync,dark/heavy track
+audio,Drink Slow (Rock),audio/mp3/Drink Slow (Rock).mp3,,streaming/sync,rock version
+audio,Drink Some More (Rock version),audio/mp3/Drink Some More (Rock version).mp3,,streaming/sync,rock variant
+audio,Emergence See. (AI Convergence) Female Voice,audio/mp3/Emergence See. (AI Convergence) Female Voice.mp3,,streaming/sync,female vocal version
+audio,Emergence See. (AI Conversion) Male Voice,audio/mp3/Emergence See. (AI Conversion) Male Voice.mp3,,streaming/sync,male vocal version
+audio,Eternally,audio/mp3/Eternally.mp3,,streaming/sync,eternal theme
+audio,Federale,audio/mp3/Federale.mp3,,streaming/sync,western/federal theme
+audio,Free Use,audio/mp3/Free Use.mp3,,streaming/sync,open license track
+audio,Go On,audio/mp3/Go On.mp3,,streaming/sync,motivational track
+audio,Hope Wins Over Reasoning,audio/mp3/Hope Wins Over Reasoning.mp3,,streaming/sync,hopeful message
+audio,I Can't Dance,audio/mp3/I Can't Dance.mp3,,streaming/sync,dance-themed
+audio,I Cried For You,audio/mp3/I Cried For You.mp3,,streaming/sync,emotional ballad
+audio,I Don't Know,audio/mp3/I Don't Know.mp3,,streaming/sync,uncertainty theme
+audio,I've Got Love,audio/mp3/I've Got Love.mp3,,streaming/sync,love theme
+audio,In Your Mind,audio/mp3/In Your Mind.mp3,,streaming/sync,psychological theme
+audio,Metaphors,audio/mp3/Metaphors.mp3,,streaming/sync,lyrical/poetic
+audio,Mr. Big Man,audio/mp3/Mr. Big Man.mp3,,streaming/sync,character study
+audio,One Night,audio/mp3/One Night.mp3,,streaming/sync,night theme
+audio,Rede My Soul (Piano version),audio/mp3/Rede My Soul (Piano version).mp3,,streaming/sync,piano arrangement
+audio,Slipping,audio/mp3/Slipping.mp3,,streaming/sync,decline theme
+audio,The Elephant in the Room,audio/mp3/The Elephant in the Room.mp3,,streaming/sync,confrontational
+audio,Torn,audio/mp3/Torn.mp3,,streaming/sync,conflict theme
+audio,Two Lovebirds,audio/mp3/Two Lovebirds.mp3,,streaming/sync,romance theme
+audio,What Are You Waiting For,audio/mp3/What Are You Waiting For.mp3,,streaming/sync,urgency theme
+audio,Without Becoming Undone,audio/mp3/Without Becoming Undone.mp3,,streaming/sync,resilience theme
+release_image,Mr. Big Man,images/releases/Mr. Big Man.jpg,,album artwork,character portrait
+release_image,Without Becoming Undone,images/releases/Without Becoming Undone.png,,album artwork,resilience visual
+release_image,The Elephant in the Room,images/releases/The Elephant is in the Room 1x1.jpg,,album artwork,confrontation visual
+release_image,Two Lovebirds,images/releases/Take Me Away.jpg,,album artwork,romance visual
+release_image,Torn,images/releases/Album cover TORN.png,,album artwork,conflict visual
+release_image,Drag Them to the Deep,images/releases/Drag Them to the Deep.jpeg,,album artwork,dark visual
+release_image,I Don't Know,images/releases/I_Dont_Know_Album_Cover.jpg,,album artwork,uncertainty visual
+release_image,Slipping,images/releases/Slipping.jpg,,album artwork,decline visual
+release_image,Bare Naked Edited Filter,images/releases/BARE NAKED EDITED FILTER.jpg,,album artwork,filtered visual
+release_image,Bare Naked Edited Filter (Remix),images/releases/BNEF Remix.jpg,,album artwork,remix visual
+release_image,Gen-X,images/releases/Gen X.jpg,,album artwork,generational theme
+release_image,Carolina Inspiration - Stagecoach 2025,images/releases/carolina inspiration.jpg,,album artwork,country visual
+release_image,Dangerous Energy,images/releases/Dangerous Energy.jpg,,album artwork,energy visual
+release_image,One Night,images/releases/1 night vers a.jpg,,album artwork,night visual
+release_image,I've Got Love,images/releases/I got Love.jpg,,album artwork,love visual
+release_image,Metaphors,images/releases/Metaphors_Album_Cover_9x16.jpg,,album artwork,metaphor visual
+release_image,What Are You Waiting For,images/releases/What_Are_You_Waiting_For_Album_Cover.jpg,,album artwork,urgency visual
+release_image,Go On,images/releases/Go On.png,,album artwork,motivation visual
+lyrics,A SKYSCRAPER,lyrics/A_SKYSCRAPER.txt,,reference/licensing,song lyrics
+lyrics,Ain't going to Let you,lyrics/Aint_going_to_Let_you.txt,,reference/licensing,song lyrics
+lyrics,Bare Naked Edited Filter,lyrics/Bare_Naked_Edited_Filter.txt,,reference/licensing,song lyrics
+lyrics,Changed,lyrics/Changed.txt,,reference/licensing,song lyrics
+lyrics,Dangerous Energy,lyrics/Dangerous_Energy.txt,,reference/licensing,song lyrics
+lyrics,Drag Them to the Deep,lyrics/Drag_Them_to_the_Deep.txt,,reference/licensing,song lyrics
+lyrics,Drink Slow (Rock),lyrics/Drink_Slow_Rock.txt,,reference/licensing,song lyrics
+lyrics,Eternally,lyrics/Eternally.txt,,reference/licensing,song lyrics
+lyrics,Free Use,lyrics/Free_Use.txt,,reference/licensing,song lyrics
+lyrics,Hope Wins Over Reasoning,lyrics/Hope_Wins_Over_Reasoning.txt,,reference/licensing,song lyrics
+lyrics,I Can't Dance,lyrics/I_Cant_Dance.txt,,reference/licensing,song lyrics
+lyrics,I Don't Know,lyrics/I_Dont_Know.txt,,reference/licensing,song lyrics
+lyrics,In Your Mind,lyrics/In_Your_Mind.txt,,reference/licensing,song lyrics
+lyrics,Mr. Big Man,lyrics/Mr_Big_Man.txt,,reference/licensing,song lyrics
+lyrics,Slipping,lyrics/Slipping.txt,,reference/licensing,song lyrics
+lyrics,The Elephant in the Room,lyrics/The_Elephant_in_the_Room.txt,,reference/licensing,song lyrics
+lyrics,Torn,lyrics/Torn.txt,,reference/licensing,song lyrics
+lyrics,Two Lovebirds,lyrics/Two_Lovebirds.txt,,reference/licensing,song lyrics
+lyrics,What Are You Waiting For,lyrics/What_Are_You_Waiting_For.txt,,reference/licensing,song lyrics
+lyrics,Without Becoming Undone,lyrics/Without_Becoming_Undone.txt,,reference/licensing,song lyrics
