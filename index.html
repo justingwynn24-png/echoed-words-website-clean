@@ -3,302 +3,863 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Echoed Words — Debug Version</title>
+  <title>Echoed Words — Echoing from dreams to reality</title>
+  <meta name="description" content="Echoed Words LLC — Independent music. Echoing from dreams to reality." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Bangers&display=swap" rel="stylesheet">
   <style>
+    /* Brand Colors from Logo.com Brand Board */
     :root {
       --brand-yellow: #ffd600;
       --brand-black: #000000;
       --brand-dark: #131514;
+      --brand-gray: #bdbdbd;
+      --brand-light-gray: #f0f0f0;
+      --card-bg: #1a1a1a;
+      --card-border: #333;
       --text-light: #f2f2f2;
       --text-muted: #bbb;
     }
 
     * { box-sizing: border-box; }
     
-    body { 
+    html, body { 
       margin: 0; 
       padding: 0; 
       background: var(--brand-black); 
       color: var(--text-light); 
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      font: 16px/1.6 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
     
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+    .container { width: min(1200px, 95vw); margin: 0 auto; }
 
-    .header { 
-      background: var(--brand-black); 
+    /* Header with Sound Wave Logo Style */
+    .site-header { 
+      position: sticky; 
+      top: 0; 
+      backdrop-filter: blur(10px); 
+      background: rgba(0,0,0,0.85); 
       border-bottom: 2px solid var(--brand-yellow); 
+      z-index: 100; 
       padding: 1rem 0;
     }
     
-    .brand {
+    .header-inner { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .brand { 
+      display: flex; 
+      align-items: center; 
+      gap: 1rem;
+    }
+    
+    .logo-container {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      background: url('logos/echoed-high-resolution-logo-transparent.png') center/contain no-repeat;
+      transition: all 0.3s ease;
+    }
+    
+    .logo-container:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 10px var(--brand-yellow));
+    }
+    
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    /* Multi-logo background strategy */
+    body {
+      background-image: 
+        url('logos/watermark/watermark-pattern-color-transparent.png'),
+        linear-gradient(135deg, var(--brand-black) 0%, var(--brand-dark) 100%);
+      background-size: 200px 200px, cover;
+      background-position: center, center;
+      background-repeat: repeat, no-repeat;
+      background-attachment: fixed, fixed;
+      background-blend-mode: overlay;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .brand-echoed {
       font-family: 'Babylonica', cursive;
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: var(--brand-yellow);
-      text-align: center;
+      margin: 0;
+      line-height: 0.9;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .brand-words {
+      font-family: 'Bangers', cursive;
+      font-size: 1.8rem;
+      color: var(--text-light);
+      margin: 0;
+      line-height: 0.8;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    
+    .tagline { 
+      margin: 0.25rem 0 0 0; 
+      color: var(--text-muted); 
+      font-size: 0.9rem; 
+      font-style: italic;
+    }
+    
+    .nav { 
+      display: flex; 
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .nav a { 
+      color: var(--text-light); 
+      text-decoration: none; 
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+    
+    .nav a:hover { 
+      background: var(--brand-yellow); 
+      color: var(--brand-black);
+      border-color: var(--brand-yellow);
     }
 
-    .section { 
-      padding: 2rem 0; 
-      border-bottom: 1px solid #333;
+    /* Content Areas */
+    .content { padding: 2rem 0; }
+    
+    .section { margin-bottom: 3rem; }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 2rem;
     }
     
     .section-title { 
       font-family: 'Bangers', cursive;
-      font-size: 2rem; 
+      font-size: 2.5rem; 
+      margin: 0 0 0.5rem 0; 
       color: var(--brand-yellow);
-      text-align: center;
-      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .section-subtitle { 
+      color: var(--text-muted); 
+      font-size: 1rem; 
+      margin: 0;
     }
 
-    .debug-info {
-      background: #222;
-      border: 1px solid #444;
-      border-radius: 8px;
-      padding: 1rem;
-      margin: 1rem 0;
-      font-family: monospace;
-      font-size: 0.9rem;
-    }
-
+    /* Card Grids */
     .grid { 
       display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-      gap: 1rem;
-      margin-top: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+      gap: 1.5rem;
     }
     
     .card { 
-      background: #1a1a1a; 
-      border: 1px solid #333; 
-      border-radius: 8px; 
-      padding: 1rem;
+      background: var(--card-bg); 
+      border: 1px solid var(--card-border); 
+      border-radius: 15px; 
+      overflow: hidden; 
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .card:hover { 
+      transform: translateY(-5px); 
+      border-color: var(--brand-yellow);
+      box-shadow: 0 10px 30px rgba(255, 214, 0, 0.2);
+    }
+    
+    /* Card placeholders with rotating logos */
+    .card .cover { 
+      aspect-ratio: 1 / 1; 
+      background: #222; 
+      display: grid; 
+      place-items: center; 
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card .cover.loading {
+      background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+      position: relative;
+    }
+    
+    .card .cover.loading::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: url('logos/text/text-slogan-color-transparent.png') center/contain no-repeat;
+      opacity: 0.4;
+      animation: rotate 3s linear infinite;
+    }
+    
+    @keyframes rotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    
+    .card .cover img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover .cover img {
+      transform: scale(1.05);
+    }
+    
+    .card .body { 
+      padding: 1.2rem; 
     }
     
     .card h3 { 
       margin: 0 0 0.5rem 0; 
-      color: var(--brand-yellow);
+      font-size: 1.1rem; 
+      color: var(--text-light);
+      font-weight: 600;
     }
     
+    .card .meta { 
+      color: var(--text-muted); 
+      font-size: 0.85rem; 
+      margin-bottom: 1rem;
+    }
+    
+    .card .description { 
+      color: var(--text-muted); 
+      font-size: 0.9rem; 
+      line-height: 1.4; 
+    }
+
+    /* Buttons and Links */
+    .btn-row { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 0.5rem; 
+      margin-top: 1rem;
+    }
+    
+    .btn { 
+      font-size: 0.8rem; 
+      padding: 0.4rem 0.8rem; 
+      border-radius: 15px; 
+      border: 1px solid var(--brand-yellow); 
+      background: transparent; 
+      color: var(--brand-yellow); 
+      text-decoration: none; 
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .btn:hover { 
+      background: var(--brand-yellow); 
+      color: var(--brand-black);
+    }
+
+    /* Audio Players */
     audio { 
       width: 100%; 
+      margin: 1rem 0; 
+      border-radius: 10px;
+    }
+
+    /* About Section */
+    .about { 
+      max-width: 800px; 
+      margin: 0 auto; 
+      text-align: center;
+    }
+    
+    .about p { 
+      margin: 1.5rem 0; 
+      color: var(--text-light); 
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    /* Contact Section */
+    .contact-grid { 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      gap: 2rem; 
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    @media (min-width: 768px) { 
+      .contact-grid { grid-template-columns: 1fr 1fr; } 
+    }
+    
+    .contact-info h4 {
+      color: var(--brand-yellow);
+      font-family: 'Bangers', cursive;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-info p {
+      margin: 1rem 0;
+      line-height: 1.6;
+    }
+    
+    .contact-info a {
+      color: var(--brand-yellow);
+      text-decoration: none;
+    }
+    
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .socials { 
+      list-style: none; 
+      padding: 0; 
+      margin: 1rem 0; 
+    }
+    
+    .socials li {
       margin: 0.5rem 0;
     }
-
-    .error { 
-      color: #ff6b6b; 
-      background: #2a1a1a;
-      padding: 1rem;
-      border-radius: 8px;
-      border: 1px solid #ff6b6b;
+    
+    .socials a { 
+      color: var(--text-light); 
+      text-decoration: none; 
+      padding: 0.5rem 0;
+      display: block;
+      transition: color 0.3s ease;
+    }
+    
+    .socials a:hover {
+      color: var(--brand-yellow);
     }
 
-    .success {
-      color: #4ade80;
-      background: #1a2a1a;
-      padding: 1rem;
-      border-radius: 8px;
-      border: 1px solid #4ade80;
+    .form { 
+      display: grid; 
+      gap: 1rem; 
+    }
+    
+    .form label { 
+      display: grid; 
+      gap: 0.5rem; 
+      font-size: 0.9rem; 
+      color: var(--text-light);
+    }
+    
+    .form input, .form textarea { 
+      background: var(--brand-dark); 
+      color: var(--text-light); 
+      border: 1px solid var(--card-border); 
+      border-radius: 10px; 
+      padding: 0.8rem; 
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+    
+    .form input:focus, .form textarea:focus {
+      outline: none;
+      border-color: var(--brand-yellow);
+    }
+    
+    .form button { 
+      background: var(--brand-yellow); 
+      color: var(--brand-black); 
+      border: 0; 
+      border-radius: 25px; 
+      padding: 0.8rem 1.5rem; 
+      font-weight: 600; 
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .form button:hover { 
+      background: #e6c200;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .site-footer { 
+      border-top: 2px solid var(--brand-yellow); 
+      background: var(--brand-dark);
+      margin-top: 3rem;
+    }
+    
+    .footer-inner { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: 2rem 0; 
+      color: var(--text-muted); 
+      flex-wrap: wrap;
+      gap: 1rem;
+      position: relative;
+    }
+    
+    .footer-inner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      background: url('logos/monograms/monogram-circle-color-transparent.png') center/contain no-repeat;
+      opacity: 0.6;
+    }
+    
+    .footer-brand {
+      font-family: 'Babylonica', cursive;
+      color: var(--brand-yellow);
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    /* Loading placeholders with logo watermarks */
+    .loading, .error { 
+      text-align: center; 
+      padding: 3rem; 
+      font-size: 1.1rem;
+      position: relative;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .loading::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: url('logos/monograms/monogram-circle-color-transparent.png') center/contain no-repeat;
+      opacity: 0.3;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+    }
+    
+    .loading { color: var(--text-muted); }
+    .error { color: #ff6b6b; }
+
+    /* Responsive Logo Strategy */
+    @media (max-width: 768px) {
+      .brand-echoed { font-size: 1.8rem; }
+      .brand-words { font-size: 1.4rem; }
+      .section-title { font-size: 2rem; }
+      .nav { justify-content: center; }
+      .header-inner { justify-content: center; text-align: center; }
+      
+      /* Mobile logo optimization */
+      .logo-container {
+        width: 50px;
+        height: 50px;
+        background-image: url('logos/monograms/monogram-circle-color-transparent.png');
+      }
+      
+      /* Simplified background for mobile */
+      body {
+        background-image: url('logos/watermark/watermark-pattern-color-transparent.png'), linear-gradient(135deg, var(--brand-black) 0%, var(--brand-dark) 100%);
+        background-size: 150px 150px, cover;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo-container {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .brand-text {
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="brand">echoed WORDS</div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-container" title="Echoed Words - Echoing from dreams to reality"></div>
+        <div class="brand-text">
+          <h1 class="brand-echoed">echoed</h1>
+          <h2 class="brand-words">WORDS</h2>
+          <p class="tagline">Echoing from dreams to reality</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#releases">Releases</a>
+        <a href="#personas">Personas</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section class="section">
-      <h2 class="section-title">Debug Information</h2>
-      <div id="debug-info" class="debug-info">Starting debug...</div>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">Latest Releases</h2>
+  <main class="container content">
+    <section id="releases" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Latest Releases</h2>
+        <p class="section-subtitle">Fresh tracks from our diverse roster of personas</p>
+      </div>
       <div id="releases-grid" class="grid">
-        <div>Loading...</div>
+        <div class="loading">Loading releases...</div>
       </div>
     </section>
 
-    <section class="section">
-      <h2 class="section-title">Personas</h2>
+    <section id="personas" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Our Personas</h2>
+        <p class="section-subtitle">Meet the creative voices behind the music</p>
+      </div>
       <div id="personas-grid" class="grid">
-        <div>Loading...</div>
+        <div class="loading">Loading personas...</div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section-header">
+        <h2 class="section-title">About Echoed Words</h2>
+      </div>
+      <div class="about">
+        <p id="about-1"></p>
+        <p id="about-2"></p>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Get in Touch</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h4>Business Inquiries</h4>
+          <p>For licensing, press, or collaboration opportunities:</p>
+          <p><a id="contact-email" href="mailto:justdef1@echoedwordsllc.com">justdef1@echoedwordsllc.com</a></p>
+          <ul id="socials" class="socials"></ul>
+        </div>
+        <form id="mailto-form" class="form">
+          <label>Name <input name="name" required></label>
+          <label>Message <textarea name="message" rows="5" required placeholder="Tell us about your project or inquiry..."></textarea></label>
+          <button type="submit">Send Message</button>
+        </form>
       </div>
     </section>
   </main>
 
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">echoed WORDS</div>
+      <div>© <span id="year"></span> Echoed Words LLC. All rights reserved.</div>
+      <div class="muted">Human-directed. AI-assisted.</div>
+    </div>
+  </footer>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   
   <script>
-    const debugLog = document.getElementById('debug-info');
-    
-    function log(message) {
-      console.log(message);
-      debugLog.innerHTML += '<br>' + message;
+    const CONFIG = {
+      owner: "Justin Gwynn",
+      label: "Echoed Words LLC",
+      email: "justdef1@echoedwordsllc.com",
+      authorshipNotice: "All works are directed, authored, and approved by Justin Gwynn (justdef1). AI tools are used as instruments under his creative direction.",
+      socials: {
+        Suno: "https://suno.com/@justdef1",
+        Website: "https://echoedwordsllc.com"
+      },
+      // CSV filename
+      dataFiles: {
+        contentCsv: "content_manifest_20250810v2.csv"
+      }
+    };
+
+    function el(tag, attrs={}, ...children){
+      const node = document.createElement(tag);
+      for (const [k,v] of Object.entries(attrs)){
+        if (k === "class") node.className = v;
+        else if (k === "html") node.innerHTML = v;
+        else node.setAttribute(k,v);
+      }
+      for (const c of children){
+        if (typeof c === "string") node.appendChild(document.createTextNode(c));
+        else if (c) node.appendChild(c);
+      }
+      return node;
     }
 
-    function createCard(item) {
-      const card = document.createElement('div');
-      card.className = 'card';
+    async function loadCSV(url){
+      if(!url) return null;
+      try {
+        const res = await fetch(url, { cache: "no-store" });
+        if(!res.ok) throw new Error("HTTP " + res.status);
+        const txt = await res.text();
+        const parsed = Papa.parse(txt, { header: true });
+        return parsed.data.filter(row => Object.values(row).some(val => val && val.trim()));
+      } catch (e) {
+        console.warn("CSV load failed:", e);
+        return null;
+      }
+    }
+
+    function createPlaceholderImage(title, persona) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 300;
+      canvas.height = 300;
+      const ctx = canvas.getContext('2d');
       
-      const title = document.createElement('h3');
-      title.textContent = item.NAME || 'Untitled';
-      card.appendChild(title);
+      // Brand colors background
+      const gradient = ctx.createLinearGradient(0, 0, 300, 300);
+      gradient.addColorStop(0, '#131514');
+      gradient.addColorStop(1, '#000000');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 300, 300);
       
-      const type = document.createElement('div');
-      type.textContent = `Type: ${item.TYPE}`;
-      type.style.color = '#bbb';
-      card.appendChild(type);
+      // Subtle logo watermark
+      ctx.globalAlpha = 0.1;
+      ctx.fillStyle = '#ffd600';
+      ctx.font = '20px Bangers';
+      ctx.textAlign = 'center';
+      ctx.fillText('echoed', 150, 100);
+      ctx.fillText('WORDS', 150, 200);
+      ctx.globalAlpha = 1;
       
-      const path = document.createElement('div');
-      path.textContent = `Path: ${item.file_path}`;
-      path.style.color = '#bbb';
-      path.style.fontSize = '0.8rem';
-      card.appendChild(path);
+      // Yellow accent
+      ctx.fillStyle = '#ffd600';
+      ctx.fillRect(0, 0, 300, 20);
+      ctx.fillRect(0, 280, 300, 20);
       
-      // Add audio player for audio files
-      if (item.TYPE === 'audio' && item.file_path) {
-        const audio = document.createElement('audio');
-        audio.controls = true;
-        audio.preload = 'none';
-        
-        const source = document.createElement('source');
-        source.src = item.file_path;
-        source.type = 'audio/mpeg';
+      // Text
+      ctx.fillStyle = '#f2f2f2';
+      ctx.font = 'bold 16px sans-serif';
+      ctx.textAlign = 'center';
+      
+      const lines = [];
+      if (title) {
+        const titleWords = title.split(' ');
+        let currentLine = '';
+        titleWords.forEach(word => {
+          const testLine = currentLine + (currentLine ? ' ' : '') + word;
+          if (ctx.measureText(testLine).width > 260) {
+            if (currentLine) lines.push(currentLine);
+            currentLine = word;
+          } else {
+            currentLine = testLine;
+          }
+        });
+        if (currentLine) lines.push(currentLine);
+      }
+      
+      if (persona) {
+        ctx.font = '12px sans-serif';
+        ctx.fillStyle = '#ffd600';
+        lines.push('', persona);
+      }
+      
+      const startY = 150 - (lines.length * 10);
+      lines.forEach((line, index) => {
+        ctx.fillText(line, 150, startY + (index * 20));
+      });
+      
+      return canvas.toDataURL();
+    }
+
+    function render(){
+      document.getElementById("year").textContent = new Date().getFullYear();
+      
+      const emailLink = document.getElementById("contact-email");
+      emailLink.textContent = CONFIG.email;
+      emailLink.href = "mailto:" + CONFIG.email;
+
+      const about1 = document.getElementById("about-1");
+      const about2 = document.getElementById("about-2");
+      about1.textContent = `${CONFIG.label} is an independent music imprint founded and directed by ${CONFIG.owner}. We publish multi-genre works and manage releases across personas while maintaining a transparent, human-led creative process.`;
+      about2.textContent = `Creative Direction: ${CONFIG.owner} (aka justdef1). AI tools are used as instruments—never as authors. ${CONFIG.authorshipNotice}`;
+
+      const socials = document.getElementById("socials");
+      socials.innerHTML = "";
+      for (const [name, url] of Object.entries(CONFIG.socials)){
+        if(!url) continue;
+        socials.appendChild(el("li", {}, el("a", { href: url, target: "_blank", rel: "noreferrer" }, name)));
+      }
+
+      const form = document.getElementById("mailto-form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const name = data.get("name");
+        const msg  = data.get("message");
+        window.location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent("Site Inquiry from " + name)}&body=${encodeURIComponent(msg)}`;
+      });
+    }
+
+    function cardRelease(release){
+      // For releases, we want to show the album artwork and audio
+      const imageUrl = release.coverImage || null;
+      
+      const linksRow = el("div", { class: "btn-row" });
+      
+      // Add audio player
+      let audio = null;
+      if (release.file_path) {
+        audio = el("audio", { controls: "", preload: "none" });
+        const source = el("source", { src: release.file_path, type: "audio/mpeg" });
         audio.appendChild(source);
         
         audio.onerror = () => {
-          log(`❌ Audio failed to load: ${item.file_path}`);
+          console.warn('Audio failed to load:', release.file_path);
+          audio.style.display = 'none';
         };
-        
-        audio.onloadstart = () => {
-          log(`🎵 Audio loading: ${item.NAME}`);
-        };
-        
-        card.appendChild(audio);
       }
       
-      // Add image for image files
-      if (item.TYPE.includes('image') && item.file_path) {
-        const img = document.createElement('img');
-        img.src = item.file_path;
-        img.style.width = '100%';
-        img.style.height = '150px';
-        img.style.objectFit = 'cover';
-        img.style.borderRadius = '4px';
-        img.style.marginTop = '0.5rem';
-        
+      const coverEl = el("div", { class: "cover" });
+      if (imageUrl) {
+        const img = el("img", { alt: release.NAME || "cover" });
         img.onerror = () => {
-          log(`❌ Image failed to load: ${item.file_path}`);
-          img.style.display = 'none';
+          img.src = createPlaceholderImage(release.NAME, release.persona || '');
         };
-        
-        img.onload = () => {
-          log(`🖼️ Image loaded: ${item.NAME}`);
-        };
-        
-        card.appendChild(img);
+        img.src = imageUrl;
+        coverEl.appendChild(img);
+      } else {
+        const placeholderImg = el("img", { 
+          src: createPlaceholderImage(release.NAME, release.persona || ''), 
+          alt: release.NAME || "cover" 
+        });
+        coverEl.appendChild(placeholderImg);
       }
       
-      return card;
+      return el("article", { class: "card" },
+        coverEl,
+        el("div", { class: "body" },
+          el("h3", {}, release.NAME || "Untitled"), 
+          el("div", { class: "meta" }, `${release.notes || ""} • 2025`),
+          audio,
+          linksRow
+        )
+      );
     }
 
-    async function loadAndTestCSV() {
+    function cardPersona(p){
+      // Use the file_path from CSV directly
+      const imageUrl = p.file_path;
+      
+      const coverEl = el("div", { class: "cover" });
+      if (imageUrl) {
+        const img = el("img", { alt: p.NAME || "persona" });
+        img.onerror = () => {
+          img.src = createPlaceholderImage(p.NAME, '');
+        };
+        img.src = imageUrl;
+        coverEl.appendChild(img);
+      } else {
+        const placeholderImg = el("img", { 
+          src: createPlaceholderImage(p.NAME, ''), 
+          alt: p.NAME || "persona" 
+        });
+        coverEl.appendChild(placeholderImg);
+      }
+      
+      return el("div", { class: "card" },
+        coverEl,
+        el("div", { class: "body" },
+          el("h3", {}, p.NAME || "Unnamed"),
+          el("div", { class: "description" }, p.notes || "")
+        )
+      );
+    }
+
+    async function bootstrap(){
+      render();
+      
       try {
-        log('🔍 Starting CSV load test...');
-        log('📁 Looking for: content_manifest_20250810v2.csv');
+        // Load the CSV file
+        const contentData = await loadCSV(CONFIG.dataFiles.contentCsv);
         
-        const response = await fetch('content_manifest_20250810v2.csv', { 
-          cache: 'no-store',
-          headers: {
-            'Cache-Control': 'no-cache'
-          }
-        });
-        
-        log(`📊 Fetch response status: ${response.status}`);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        if (!contentData || contentData.length === 0) {
+          throw new Error('No content data loaded');
         }
         
-        const csvText = await response.text();
-        log(`📄 CSV loaded, length: ${csvText.length} characters`);
-        log(`📄 First 200 chars: ${csvText.substring(0, 200)}...`);
+        // Filter releases (audio + release images)
+        const audioTracks = contentData.filter(row => row.TYPE === 'audio').slice(0, 16);
+        const releaseImages = contentData.filter(row => row.TYPE === 'release_image');
         
-        const parsed = Papa.parse(csvText, { 
-          header: true,
-          skipEmptyLines: true
+        // Combine audio with matching release images
+        const releases = audioTracks.map(audio => {
+          const matchingImage = releaseImages.find(img => img.NAME === audio.NAME);
+          return {
+            ...audio,
+            coverImage: matchingImage ? matchingImage.file_path : null,
+            persona: audio.notes // Use notes as persona info for now
+          };
         });
         
-        log(`✅ CSV parsed successfully`);
-        log(`📋 Headers: ${parsed.meta.fields.join(', ')}`);
-        log(`📋 Total rows: ${parsed.data.length}`);
+        // Filter personas
+        const personas = contentData.filter(row => row.TYPE === 'persona_image');
         
-        // Show breakdown by type
-        const typeCount = {};
-        parsed.data.forEach(row => {
-          const type = row.TYPE || 'unknown';
-          typeCount[type] = (typeCount[type] || 0) + 1;
-        });
-        
-        log(`📊 Content breakdown:`);
-        Object.entries(typeCount).forEach(([type, count]) => {
-          log(`   ${type}: ${count} items`);
-        });
-        
-        // Display releases (audio tracks)
-        const audioTracks = parsed.data.filter(row => row.TYPE === 'audio');
-        const releaseImages = parsed.data.filter(row => row.TYPE === 'release_image');
-        
-        log(`🎵 Found ${audioTracks.length} audio tracks`);
-        log(`🖼️ Found ${releaseImages.length} release images`);
-        
-        const releasesGrid = document.getElementById('releases-grid');
-        releasesGrid.innerHTML = '';
-        
-        if (audioTracks.length > 0) {
-          // Show first 8 tracks
-          audioTracks.slice(0, 8).forEach(track => {
-            releasesGrid.appendChild(createCard(track));
-          });
+        // Render releases
+        const relRoot = document.getElementById("releases-grid");
+        relRoot.innerHTML = "";
+        if (releases.length > 0) {
+          releases.forEach(r => relRoot.appendChild(cardRelease(r)));
         } else {
-          releasesGrid.innerHTML = '<div class="error">No audio tracks found</div>';
+          relRoot.innerHTML = '<div class="error">No releases found. Check your CSV data.</div>';
         }
         
-        // Display personas
-        const personas = parsed.data.filter(row => row.TYPE === 'persona_image');
-        log(`👥 Found ${personas.length} personas`);
-        
-        const personasGrid = document.getElementById('personas-grid');
-        personasGrid.innerHTML = '';
-        
+        // Render personas
+        const perRoot = document.getElementById("personas-grid");
+        perRoot.innerHTML = "";
         if (personas.length > 0) {
-          personas.forEach(persona => {
-            personasGrid.appendChild(createCard(persona));
-          });
+          personas.forEach(p => perRoot.appendChild(cardPersona(p)));
         } else {
-          personasGrid.innerHTML = '<div class="error">No personas found</div>';
+          perRoot.innerHTML = '<div class="error">No personas found. Check your CSV data.</div>';
         }
-        
-        log('✅ Page loaded successfully!');
         
       } catch (error) {
-        log(`❌ Error: ${error.message}`);
-        document.getElementById('releases-grid').innerHTML = 
-          `<div class="error">Failed to load: ${error.message}</div>`;
-        document.getElementById('personas-grid').innerHTML = 
-          `<div class="error">Failed to load: ${error.message}</div>`;
+        console.error('Bootstrap error:', error);
+        document.getElementById("releases-grid").innerHTML = '<div class="error">Failed to load content. Please check console for details.</div>';
+        document.getElementById("personas-grid").innerHTML = '<div class="error">Failed to load content. Please check console for details.</div>';
       }
     }
 
-    // Start loading when page is ready
-    document.addEventListener('DOMContentLoaded', loadAndTestCSV);
+    // Initialize the website when page loads
+    window.addEventListener('DOMContentLoaded', bootstrap);
   </script>
 </body>
 </html>
