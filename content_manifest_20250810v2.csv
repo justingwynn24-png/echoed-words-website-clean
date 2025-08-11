@@ -1,6 +1,6 @@
 TYPE,NAME,file_path,drive_share_link,intended_use,notes
 persona_image,Persephone's Children,images/personas/Persephone's Children.jpg,,/personas card + hero,primary band image
-persona_image,Lugal I-Shun,images/personas/justdef1.png,,/personas card,reggae persona - using justdef1 image as placeholder
+persona_image,Lugal I-Shun,images/personas/Lugal I-Shun.png,,/personas card,reggae persona card, roots reggae persona - using available image
 persona_image,Dingiren Kinninzi,images/personas/dangerous energy.png,,/personas card,cinematic house persona - using available image
 persona_image,justdef1,images/personas/justdef1.png,,/personas card,producer/composer
 logo,Echoed Words Main,logos/echoed-high-resolution-logo.png,,header/footer,main logo
@@ -89,3 +89,4 @@ lyrics,Torn,lyrics/Torn.txt,,reference/licensing,song lyrics
 lyrics,Two Lovebirds,lyrics/Two_Lovebirds.txt,,reference/licensing,song lyrics
 lyrics,What Are You Waiting For,lyrics/What_Are_You_Waiting_For.txt,,reference/licensing,song lyrics
 lyrics,Without Becoming Undone,lyrics/Without_Becoming_Undone.txt,,reference/licensing,song lyrics
+
